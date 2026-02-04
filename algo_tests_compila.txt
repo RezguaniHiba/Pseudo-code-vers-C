@@ -1,0 +1,858 @@
+1. Algorithme Simple (Test de base)
+algorithme CalculSimple;
+variables
+    x, y, resultat : entier;
+debut
+    x := 10;
+    y := 5;
+    resultat := x + y * 2;
+    ecrire("Résultat = ", resultat);
+fin
+2. Algorithme avec Conditions (SI)
+
+algorithme TestConditions;
+variables
+    age : entier;
+    majeur : booleen;
+debut
+    age := 20;
+    si age >= 18 alors
+        majeur := vrai;
+        ecrire("Vous êtes majeur");
+    sinon
+        majeur := faux;
+        ecrire("Vous êtes mineur");
+    fin_si;
+fin
+3. Algorithme avec Boucle POUR
+
+algorithme TableMultiplication;
+variables
+    i, n, produit : entier;
+debut
+    n := 7;
+    pour i := 1 jusqua 10 pas 1 faire
+        produit := n * i;
+        ecrire(n, " x ", i, " = ", produit);
+    fin_pour;
+fin
+4. Algorithme avec Tant Que
+algorithme SommeEntiers;
+variables
+    n, somme, compteur : entier;
+debut
+    n := 10;
+    somme := 0;
+    compteur := 1;
+    tant_que compteur <= n faire
+        somme := somme + compteur;
+        compteur := compteur + 1;
+    fin_tant_que;
+    ecrire("Somme des ", n, " premiers entiers = ", somme);
+fin
+5. Algorithme avec Selon/Cas (Switch)
+algorithme Calculatrice;
+variables
+    choix, a, b, resultat : entier;
+debut
+    a := 15;
+    b := 3;
+    choix := 2;  #exemple commentaire
+    selon (choix)
+        si 1 : 
+            resultat := a + b;
+            ,sortir
+        si 2 : 
+            resultat := a - b;
+           ,sortir
+        si 3 : 
+            resultat := a * b;
+            ,sortir
+        si 4 : 
+            resultat := a / b;
+            ,sortir
+        si autres : 
+            ecrire("Choix invalide");
+    fin_selon;
+    
+    ecrire("Résultat = ", resultat);
+fin
+
+6. Algorithme avec Lire/Écrire
+algorithme Interaction;
+variables
+    nom : chaine;
+    age : entier;
+    taille : reel;
+debut
+    ecrire("Entrez votre nom: ");
+    lire(nom);
+    ecrire("Entrez votre age: ");
+    lire(age);
+    ecrire("Entrez votre taille: ");
+    lire(taille);
+    
+    ecrire("Bonjour ", nom);
+    ecrire("Vous avez ", age, " ans");
+    ecrire("Vous mesurez ", taille, " m");
+fin
+7. Algorithme avec Modulo
+algorithme TestModulo;
+variables
+    i : entier;
+debut
+    pour i := 1 jusqua 20 pas 1 faire
+        si i mod 2 = 0 alors
+            ecrire(i, " est pair");
+        sinon
+            ecrire(i, " est impair");
+        fin_si;
+    fin_pour;
+fin
+8. Algorithme Complexe avec Types Divers
+algorithme GestionEtudiant;
+variables
+    nom : chaine;
+    notes : tableau[5] de reel;
+    moyenne : reel;
+    i : entier;
+    valide : booleen;
+constante
+    NOTE_MAX = 20;
+debut
+    nom := "Jean Dupont";
+    notes[1] := 15.5;
+    notes[2] := 18.0;
+    notes[3] := 12.5;
+    notes[4] := 16.0;
+    notes[5] := 14.5;
+    moyenne := 0;
+    pour i := 1 jusqua 5 pas 1 faire
+        moyenne := moyenne + notes[i];
+    fin_pour;
+    moyenne := moyenne / 5;
+    si moyenne >= 10 alors
+        valide := vrai;
+        ecrire(nom, " est admis avec ", moyenne, " de moyenne");
+    sinon
+        valide := faux;
+        ecrire(nom, " est recalé");
+    fin_si;
+fin
+9. Algorithme avec Structure
+algorithme TestStructureSimple;
+variables
+    etudiant : structure
+        nom : chaine;
+        age : entier;
+        note : reel;
+    fin_structure;
+debut
+    etudiant.nom := "Pierre";
+    etudiant.age := 20;
+    etudiant.note := 15.5;
+    
+    ecrire("Nom: ", etudiant.nom);
+    ecrire("Age: ", etudiant.age);
+    ecrire("Note: ", etudiant.note);
+fin
+10. Algorithme avec Opérateurs Logiques
+algorithme TestLogique;
+variables
+    a, b, c : entier;
+    condition1, condition2 : booleen;
+debut
+    a := 5;
+    b := 10;
+    c := 15;
+    
+    condition1 := (a < b) et (b < c);
+    condition2 := (a > b) ou (c > b);
+    
+    si condition1 et condition2 alors
+        ecrire("Les deux conditions sont vraies");
+    sinon
+        si condition1 alors
+            ecrire("Seule condition1 est vraie");
+        sinon
+            si condition2 alors
+                ecrire("Seule condition2 est vraie");
+            sinon
+                ecrire("Aucune condition n'est vraie");
+            fin_si;
+        fin_si;
+    fin_si;
+fin
+11. Algorithme avec Répéter/Jusqua
+algorithme ValidationSaisie;
+variables
+    valeur : entier;
+    valide : booleen;
+debut
+    repeter
+        ecrire("Entrez un nombre entre 1 et 100: ");
+        lire(valeur);
+        valide := (valeur >= 1) et (valeur <= 100);
+        si non valide alors
+            ecrire("Valeur invalide! Réessayez.");
+        fin_si;
+    jusqua_que valide;
+    
+    ecrire("Valeur acceptée: ", valeur);
+fin
+
+========
+1; erreur car inconnu 
+algorithme TestCI;
+variables
+    @x, y : entier; 
+debut
+    x := 10;
+fin
+2; Num trop long
+algorithme TestNumLong;
+variables
+    x : entier;
+debut
+    x := 123456789012;  # 12 chiffres > 11 (MAX_ENTIER)
+fin
+3. Chaîne non fermée
+algorithme TestChaineNonFermee;
+debut
+    ecrire("Bonjour le monde);  # Guillemet fermant manquant
+fin
+4.Fichier vide
+5. id trop long 
+=========
+
+Erreurs syntaxiques:
+- début non écrite:
+algorithme ValidationSaisie;
+variables
+    valeur : entier;
+    repeter
+        ecrire("Entrez un nombre entre 1 et 100: ");
+        lire(valeur);
+        
+        si non (valeur >= 1) et (valeur <= 100) alors
+            ecrire("Valeur invalide! Réessayez.");
+        fin_si;
+    jusqua_que (valeur >= 1) et (valeur <= 100);
+    
+    ecrire("Valeur acceptée: ", valeur);
+fin
+
+- fin_si non écrite:
+algorithme ValidationSaisie;
+variables
+    valeur : entier;
+    
+debut
+    repeter
+        ecrire("Entrez un nombre entre 1 et 100: ");
+        lire(valeur);
+        
+        si non (valeur >= 1) et (valeur <= 100) alors
+            ecrire("Valeur invalide! Réessayez.");
+        
+    jusqua_que (valeur >= 1) et (valeur <= 100);
+    
+    ecrire("Valeur acceptée: ", valeur);
+fin
+
+Erreurs sémantiques:
+-	"Double déclaration de l'identificateur" :
+algorithme BanqueSimple;
+variables
+    choix, code, tentative : entier;
+    continuer, codeCorrect : booleen;
+    solde : reel;
+    montant : reel;
+    solde : reel;
+constante
+    CODE_SECRET = 1234;
+debut
+    solde := 1000.0;
+    continuer := vrai;
+    
+    ecrire("=== BANQUE SIMPLIFIÉE ===");
+    
+    tant_que continuer faire
+        ecrire("\n=== MENU ===");
+        ecrire("1. Voir le solde");
+        ecrire("2. Déposer de l'argent");
+        ecrire("3. Retirer de l'argent");
+        ecrire("4. Quitter");
+        ecrire("Votre choix: ");
+        lire(choix);
+        
+        selon (choix)
+            si 1 : 
+                # Voir le solde
+                ecrire("Votre solde: ", solde, "€");
+                ,sortir
+                
+            si 2 : 
+                # Dépôt
+                ecrire("Montant à déposer: ");
+                lire(montant);
+                
+                si montant > 0 alors
+                    solde := solde + montant;
+                    ecrire("Dépôt effectué. Nouveau solde: ", solde, "€");
+                sinon
+                    ecrire("Montant invalide");
+                fin_si;
+                ,sortir
+                
+            si 3 : 
+                # Retrait avec code
+                codeCorrect := faux;
+                tentative := 1;
+                
+                tant_que (tentative <= 3) et (non codeCorrect) faire
+                    ecrire("Code secret (tentative ", tentative, "/3): ");
+                    lire(code);
+                    
+                    si code = CODE_SECRET alors
+                        codeCorrect := vrai;
+                        ecrire("Montant à retirer: ");
+                        lire(montant);
+                        
+                        si (montant > 0) et (montant <= solde) alors
+                            solde := solde - montant;
+                            ecrire("Retrait effectué. Nouveau solde: ", solde, "€");
+                        sinon
+                            ecrire("Montant invalide ou solde insuffisant");
+                        fin_si;
+                    sinon
+                        ecrire("Code incorrect");
+                        tentative := tentative + 1;
+                    fin_si;
+                fin_tant_que;
+                
+                si non codeCorrect alors
+                    ecrire("Compte bloqué");
+                fin_si;
+                ,sortir
+                
+            si 4 : 
+                # Quitter
+                continuer := faux;
+                ecrire("Au revoir!");
+                ,sortir
+                
+            si autres : 
+                ecrire("Choix invalide");
+        fin_selon;
+    fin_tant_que;
+    
+    ecrire("Solde final: ", solde, "€");
+fin
+-	"Identificateur non déclaré" :
+algorithme BanqueSimple;
+variables
+    choix, code, tentative : entier;
+    continuer, codeCorrect : booleen;
+    montant : reel;
+    
+constante
+    CODE_SECRET = 1234;
+debut
+    solde := 1000.0;
+    continuer := vrai;
+    
+    ecrire("=== BANQUE SIMPLIFIÉE ===");
+    
+    tant_que continuer faire
+        ecrire("\n=== MENU ===");
+        ecrire("1. Voir le solde");
+        ecrire("2. Déposer de l'argent");
+        ecrire("3. Retirer de l'argent");
+        ecrire("4. Quitter");
+        ecrire("Votre choix: ");
+        lire(choix);
+        
+        selon (choix)
+            si 1 : 
+                # Voir le solde
+                ecrire("Votre solde: ", solde, "€");
+                ,sortir
+                
+            si 2 : 
+                # Dépôt
+                ecrire("Montant à déposer: ");
+                lire(montant);
+                
+                si montant > 0 alors
+                    solde := solde + montant;
+                    ecrire("Dépôt effectué. Nouveau solde: ", solde, "€");
+                sinon
+                    ecrire("Montant invalide");
+                fin_si;
+                ,sortir
+                
+            si 3 : 
+                # Retrait avec code
+                codeCorrect := faux;
+                tentative := 1;
+                
+                tant_que (tentative <= 3) et (non codeCorrect) faire
+                    ecrire("Code secret (tentative ", tentative, "/3): ");
+                    lire(code);
+                    
+                    si code = CODE_SECRET alors
+                        codeCorrect := vrai;
+                        ecrire("Montant à retirer: ");
+                        lire(montant);
+                        
+                        si (montant > 0) et (montant <= solde) alors
+                            solde := solde - montant;
+                            ecrire("Retrait effectué. Nouveau solde: ", solde, "€");
+                        sinon
+                            ecrire("Montant invalide ou solde insuffisant");
+                        fin_si;
+                    sinon
+                        ecrire("Code incorrect");
+                        tentative := tentative + 1;
+                    fin_si;
+                fin_tant_que;
+                
+                si non codeCorrect alors
+                    ecrire("Compte bloqué");
+                fin_si;
+                ,sortir
+                
+            si 4 : 
+                # Quitter
+                continuer := faux;
+                ecrire("Au revoir!");
+                ,sortir
+                
+            si autres : 
+                ecrire("Choix invalide");
+        fin_selon;
+    fin_tant_que;
+    
+    ecrire("Solde final: ", solde, "€");
+fin
+
+
+-	"Tentative de modifier une constante" :
+algorithme BanqueSimple;
+variables
+    choix, code, tentative : entier;
+    continuer, codeCorrect : booleen;
+    solde : reel;
+    montant : reel;
+    
+constante
+    CODE_SECRET = 1234;
+debut
+    solde := 1000.0;
+    continuer := vrai;
+
+    CODE_SECRET := 14;
+    
+    ecrire("=== BANQUE SIMPLIFIÉE ===");
+    
+    tant_que continuer faire
+        ecrire("\n=== MENU ===");
+        ecrire("1. Voir le solde");
+        ecrire("2. Déposer de l'argent");
+        ecrire("3. Retirer de l'argent");
+        ecrire("4. Quitter");
+        ecrire("Votre choix: ");
+        lire(choix);
+        
+        selon (choix)
+            si 1 : 
+                # Voir le solde
+                ecrire("Votre solde: ", solde, "€");
+                ,sortir
+                
+            si 2 : 
+                # Dépôt
+                ecrire("Montant à déposer: ");
+                lire(montant);
+                
+                si montant > 0 alors
+                    solde := solde + montant;
+                    ecrire("Dépôt effectué. Nouveau solde: ", solde, "€");
+                sinon
+                    ecrire("Montant invalide");
+                fin_si;
+                ,sortir
+                
+            si 3 : 
+                # Retrait avec code
+                codeCorrect := faux;
+                tentative := 1;
+                
+                tant_que (tentative <= 3) et (non codeCorrect) faire
+                    ecrire("Code secret (tentative ", tentative, "/3): ");
+                    lire(code);
+                    
+                    si code = CODE_SECRET alors
+                        codeCorrect := vrai;
+                        ecrire("Montant à retirer: ");
+                        lire(montant);
+                        
+                        si (montant > 0) et (montant <= solde) alors
+                            solde := solde - montant;
+                            ecrire("Retrait effectué. Nouveau solde: ", solde, "€");
+                        sinon
+                            ecrire("Montant invalide ou solde insuffisant");
+                        fin_si;
+                    sinon
+                        ecrire("Code incorrect");
+                        tentative := tentative + 1;
+                    fin_si;
+                fin_tant_que;
+                
+                si non codeCorrect alors
+                    ecrire("Compte bloqué");
+                fin_si;
+                ,sortir
+                
+            si 4 : 
+                # Quitter
+                continuer := faux;
+                ecrire("Au revoir!");
+                ,sortir
+                
+            si autres : 
+                ecrire("Choix invalide");
+        fin_selon;
+    fin_tant_que;
+    
+    ecrire("Solde final: ", solde, "€");
+fin
+
+
+-	"Tentative de modifier une constante":
+
+
+algorithme BanqueSimple;
+variables
+    choix, code, tentative : entier;
+    continuer, codeCorrect : booleen;
+    solde : reel;
+    montant : reel;
+constante
+    CODE_SECRET = 1234;
+debut
+    solde := 1000.0;
+    continuer := vrai;
+
+    CODE_SECRET := 134;
+    
+    ecrire("=== BANQUE SIMPLIFIÉE ===");
+    
+    tant_que continuer faire
+        ecrire("\n=== MENU ===");
+        ecrire("1. Voir le solde");
+        ecrire("2. Déposer de l'argent");
+        ecrire("3. Retirer de l'argent");
+        ecrire("4. Quitter");
+        ecrire("Votre choix: ");
+        lire(choix);
+        
+        selon (choix)
+            si 1 : 
+                # Voir le solde
+                ecrire("Votre solde: ", solde, "€");
+                ,sortir
+                
+            si 2 : 
+                # Dépôt
+                ecrire("Montant à déposer: ");
+                lire(montant);
+                
+                si montant > 0 alors
+                    solde := solde + montant;
+                    ecrire("Dépôt effectué. Nouveau solde: ", solde, "€");
+                sinon
+                    ecrire("Montant invalide");
+                fin_si;
+                ,sortir
+                
+            si 3 : 
+                # Retrait avec code
+                codeCorrect := faux;
+                tentative := 1;
+                
+                tant_que (tentative <= 3) et (non codeCorrect) faire
+                    ecrire("Code secret (tentative ", tentative, "/3): ");
+                    lire(code);
+                    
+                    si code = CODE_SECRET alors
+                        codeCorrect := vrai;
+                        ecrire("Montant à retirer: ");
+                        lire(montant);
+                        
+                        si (montant > 0) et (montant <= solde) alors
+                            solde := solde - montant;
+                            ecrire("Retrait effectué. Nouveau solde: ", solde, "€");
+                        sinon
+                            ecrire("Montant invalide ou solde insuffisant");
+                        fin_si;
+                    sinon
+                        ecrire("Code incorrect");
+                        tentative := tentative + 1;
+                    fin_si;
+                fin_tant_que;
+                
+                si non codeCorrect alors
+                    ecrire("Compte bloqué");
+                fin_si;
+                ,sortir
+                
+            si 4 : 
+                # Quitter
+                continuer := faux;
+                ecrire("Au revoir!");
+                ,sortir
+                
+            si autres : 
+                ecrire("Choix invalide");
+        fin_selon;
+    fin_tant_que;
+    
+    ecrire("Solde final: ", solde, "€");
+fin
+
+
+-	"Incompatibilite de type" :
+algorithme BanqueSimple;
+variables
+    choix, code, tentative : entier;
+    continuer, codeCorrect : booleen;
+    solde : entier;
+    montant : chaine;
+    
+constante
+    CODE_SECRET = 1234;
+debut
+    solde := 1000.5;
+    continuer := 100;
+    
+    ecrire("=== BANQUE SIMPLIFIÉE ===");
+    
+    tant_que continuer faire
+        ecrire("\n=== MENU ===");
+        ecrire("1. Voir le solde");
+        ecrire("2. Déposer de l'argent");
+        ecrire("3. Retirer de l'argent");
+        ecrire("4. Quitter");
+        ecrire("Votre choix: ");
+        lire(choix);
+        
+        selon (choix)
+            si 1 : 
+                # Voir le solde
+                ecrire("Votre solde: ", solde, "€");
+                ,sortir
+                
+            si 2 : 
+                # Dépôt
+                ecrire("Montant à déposer: ");
+                lire(montant);
+                
+                si montant > 0 alors
+                    solde := solde + montant;
+                    ecrire("Dépôt effectué. Nouveau solde: ", solde, "€");
+                sinon
+                    ecrire("Montant invalide");
+                fin_si;
+                ,sortir
+                
+            si 3 : 
+                # Retrait avec code
+                codeCorrect := faux;
+                tentative := 1;
+                
+                tant_que (tentative <= 3) et (non codeCorrect) faire
+                    ecrire("Code secret (tentative ", tentative, "/3): ");
+                    lire(code);
+                    
+                    si code = CODE_SECRET alors
+                        codeCorrect := vrai;
+                        ecrire("Montant à retirer: ");
+                        lire(montant);
+                        
+                        si (montant > 0) et (montant <= solde) alors
+                            solde := solde - montant;
+                            ecrire("Retrait effectué. Nouveau solde: ", solde, "€");
+                        sinon
+                            ecrire("Montant invalide ou solde insuffisant");
+                        fin_si;
+                    sinon
+                        ecrire("Code incorrect");
+                        tentative := tentative + 1;
+                    fin_si;
+                fin_tant_que;
+                
+                si non codeCorrect alors
+                    ecrire("Compte bloqué");
+                fin_si;
+                ,sortir
+                
+            si 4 : 
+                # Quitter
+                continuer := faux;
+                ecrire("Au revoir!");
+                ,sortir
+                
+            si autres : 
+                ecrire("Choix invalide");
+        fin_selon;
+    fin_tant_que;
+    
+    ecrire("Solde final: ", solde, "€");
+fin
+
+
+-	"Utilisation du nom du programme interdit" :
+
+algorithme BanqueSimple;
+variables
+    choix, code, tentative : entier;
+    continuer, codeCorrect : booleen;
+    solde : reel;
+    montant : reel;
+    BanqueSimple : chaine;
+
+constante
+    CODE_SECRET = 1234;
+debut
+    solde := 1000.0;
+    continuer := vrai;
+    
+    ecrire("=== BANQUE SIMPLIFIÉE ===");
+    
+    tant_que continuer faire
+        ecrire("\n=== MENU ===");
+        ecrire("1. Voir le solde");
+        ecrire("2. Déposer de l'argent");
+        ecrire("3. Retirer de l'argent");
+        ecrire("4. Quitter");
+        ecrire("Votre choix: ");
+        lire(choix);
+        
+        selon (choix)
+            si 1 : 
+                # Voir le solde
+                ecrire("Votre solde: ", solde, "€");
+                ,sortir
+                
+            si 2 : 
+                # Dépôt
+                ecrire("Montant à déposer: ");
+                lire(montant);
+                
+                si montant > 0 alors
+                    solde := solde + montant;
+                    ecrire("Dépôt effectué. Nouveau solde: ", solde, "€");
+                sinon
+                    ecrire("Montant invalide");
+                fin_si;
+                ,sortir
+                
+            si 3 : 
+                # Retrait avec code
+                codeCorrect := faux;
+                tentative := 1;
+                
+                tant_que (tentative <= 3) et (non codeCorrect) faire
+                    ecrire("Code secret (tentative ", tentative, "/3): ");
+                    lire(code);
+                    
+                    si code = CODE_SECRET alors
+                        codeCorrect := vrai;
+                        ecrire("Montant à retirer: ");
+                        lire(montant);
+                        
+                        si (montant > 0) et (montant <= solde) alors
+                            solde := solde - montant;
+                            ecrire("Retrait effectué. Nouveau solde: ", solde, "€");
+                        sinon
+                            ecrire("Montant invalide ou solde insuffisant");
+                        fin_si;
+                    sinon
+                        ecrire("Code incorrect");
+                        tentative := tentative + 1;
+                    fin_si;
+                fin_tant_que;
+                
+                si non codeCorrect alors
+                    ecrire("Compte bloqué");
+                fin_si;
+                ,sortir
+                
+            si 4 : 
+                # Quitter
+                continuer := faux;
+                ecrire("Au revoir!");
+                ,sortir
+                
+            si autres : 
+                ecrire("Choix invalide");
+        fin_selon;
+    fin_tant_que;
+    
+    ecrire("Solde final: ", solde, "€");
+fin
+
+
+-	"Champ de structure inexistant" :
+algorithme TestStructureSimple;
+variables
+    etudiant : structure
+        nom : chaine;
+        age : entier;
+        note : reel;
+    fin_structure;
+debut
+    etudiant.nom := "Pierre";
+    etudiant.age := 20;
+    etudiant.note := 15.5;
+    etudiant.filiere := "GL";
+    
+    ecrire("Nom: ", etudiant.nom);
+    ecrire("Age: ", etudiant.age);
+    ecrire("Note: ", etudiant.note);
+fin
+
+
+-	"Indice de tableau invalide" :
+algorithme GestionEtudiant;
+variables
+    nom : chaine;
+    notes : tableau[5] de reel;
+    moyenne : reel;
+    i : entier;
+    valide : booleen;
+constante
+    NOTE_MAX = 20;
+debut
+    nom := "Jean Dupont";
+    notes[1] := 15.5;
+    notes[2] := 18.0;
+    notes[3] := 12.5;
+    notes[4] := 16.0;
+    notes[5] := 14.5;
+    notes[6] := 14.5;
+    moyenne := 0;
+    pour i := 1 jusqua 5 pas 1 faire
+        moyenne := moyenne + notes[i];
+    fin_pour;
+    moyenne := moyenne / 5;
+    si moyenne >= 10 alors
+        valide := vrai;
+        ecrire(nom, " est admis avec ", moyenne, " de moyenne");
+    sinon
+        valide := faux;
+        ecrire(nom, " est recalé");
+    fin_si;
+fin
